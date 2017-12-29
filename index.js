@@ -1,13 +1,29 @@
-import { error } from 'util';
-
 const express = require('express')
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const { Coin } = require('./models')
+
 const PORT = process.env.PORT || 3030;
 
-app.use(express.static(path.join(__dirname, 'build')));
+app
+.use(express.static(path.join(__dirname, 'build')))
+.use(cors())
+.use(bodyParser.urlencoded({ extended: true }))
+.use(bodyParser.json())
+
+app.get('/coins', (req, res, next) => {
+  Coin.find()
+
+    .then((coins) => res.json(coins))
+
+    .catch((error) => next(error))
+})
 
 app.post('/coins', function (req, res, next) {
+  let newCoin = req.body
+
   Coin.create(newCoin)
   .then(coin => res.json(coin))
   .catch(error => next(error))

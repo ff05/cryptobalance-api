@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "seed": "node db/seed.js",
+    "dev": "nodemon --inspect ."
+  },
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc0",
+    "nodemon": "^1.14.3"
   }
 }
