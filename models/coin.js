@@ -2,7 +2,7 @@ const mongoose = require('../config/database')
 const { Schema } = mongoose
 
 const coinSchema = new Schema({
-  coin: String,
+  symbol: String,
   amount: Number
 })
 
