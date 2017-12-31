@@ -29,6 +29,21 @@ app.post('/coins', function (req, res, next) {
   .catch(error => next(error))
 });
 
+app.delete('coins/:id', (req, res, next) => {
+  const id = req.params.id
+  console.log(id)
+
+  Coin.findByIdAndRemove(id)
+    .then(() => {
+      res.status = 200
+      res.json({
+        message: 'Removed',
+        _id: id
+      })
+    })
+    .catch((error) => next(error))
+})
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`)
 })
