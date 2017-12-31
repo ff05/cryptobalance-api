@@ -8,8 +8,8 @@ const { Coin } = require('./models')
 const PORT = process.env.PORT || 3030;
 
 app
-.use(express.static(path.join(__dirname, 'build')))
 .use(cors())
+.use(express.static(path.join(__dirname, 'build')))
 .use(bodyParser.urlencoded({ extended: true }))
 .use(bodyParser.json())
 
