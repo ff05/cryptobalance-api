@@ -9,15 +9,12 @@ const PORT = process.env.PORT || 3030;
 
 app
 .use(cors())
-.use(express.static(path.join(__dirname, 'build')))
 .use(bodyParser.urlencoded({ extended: true }))
 .use(bodyParser.json())
 
 app.get('/coins', (req, res, next) => {
   Coin.find()
-
     .then((coins) => res.json(coins))
-
     .catch((error) => next(error))
 })
 
@@ -29,7 +26,7 @@ app.post('/coins', function (req, res, next) {
   .catch(error => next(error))
 });
 
-app.delete('coins/:id', (req, res, next) => {
+app.delete('/coins/:id', (req, res, next) => {
   const id = req.params.id
   console.log(id)
 
