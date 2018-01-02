@@ -28,7 +28,6 @@ app.post('/coins', function (req, res, next) {
 
 app.delete('/coins/:id', (req, res, next) => {
   const id = req.params.id
-  console.log(id)
 
   Coin.findByIdAndRemove(id)
     .then(() => {
